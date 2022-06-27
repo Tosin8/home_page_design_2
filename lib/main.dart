@@ -217,53 +217,95 @@ class _HomePageState extends State<HomePage>
       String subtitle2,
       String image2,
       Widget route2) {
-    double w = MediaQuery.of(context).size.width; 
-    return Padding (
-      padding: EdgeInsets.fromLTRB(w/20, 0, w/20, w/20), 
+    double w = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: EdgeInsets.fromLTRB(w / 20, 0, w / 20, w / 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          card(title1, subtitle1, image1, route1), 
-          card(title2, subtitle2, image2, route2), 
-        ], 
-      ), 
-    ); 
+          card(title1, subtitle1, image1, route1),
+          card(title2, subtitle2, image2, route2),
+        ],
+      ),
+    );
   }
 
   Widget card(String title, String subtitle, String image, Widget route) {
-    double w = MediaQuery.of(context).size.width; 
+    double w = MediaQuery.of(context).size.width;
     return Opacity(
-      opacity: _animation.value, 
-      child: InkWell(
-        highlightColor: Colors.transparent, 
-        splashColor: Colors.transparent,
-onTap: () {
-  Navigator.of(context).push(MyFadeRoute(route: route)); 
-},  
-child: Container(
-  width: w/2.36,
-height: w/1.8, 
-decoration: BoxDecoration(
-  color: Colors.white, 
-  borderRadius: BorderRadius.circular(20),
- boxShadow:[
-  BoxShadow(
-    color: Colors.black.withOpacity(.05),
-     blurRadius: 50), 
-]), 
-child: Column(
-  children: [
-    Container(
-      width: w/2.36, 
-      height: w/2.6,
-      decoration: const BoxDecoration(
-        color: Color(0xff5c71F3), 
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(20), 
-      ))
-    )
-  ],
-),
-    )
+        opacity: _animation.value,
+        child: InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {
+              Navigator.of(context).push(MyFadeRoute(route: route));
+            },
+            child: Container(
+              width: w / 2.36,
+              height: w / 1.8,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(.05), blurRadius: 50),
+                  ]),
+              child: Column(
+                children: [
+                  Container(
+                    width: w / 2.36,
+                    height: w / 2.6,
+                    decoration: const BoxDecoration(
+                        color: Color(0xff5c71F3),
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        )),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'Add Image here',
+                      textScaleFactor: 1.2,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+
+                  // Image.asset(image, fit: BoxFit.cover, width: w/2.36, height: w/2.6),
+                  Container(
+                    height: w / 6,
+                    width: w / 2.36,
+                    padding: EdgeInsets.symmetric(horizontal: w / 25),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(title,
+                              textScaleFactor: 1.4,
+                              maxLines: 1,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(.8),
+                                fontWeight: FontWeight.w500,
+                              )),
+                          Text(
+                            subtitle,
+                            textScaleFactor: 1,
+                            maxLines: 1,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black.withOpacity(.7),
+                            ),
+                          ),
+                        ]),
+                  )
+                ],
+              ),
+            )));
   }
+}
+
+class MyFadeRoute extends PageRouteBuilder {
+  final Widget page;
+  final Widget route;
 }
