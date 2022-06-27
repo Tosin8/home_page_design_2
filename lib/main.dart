@@ -38,7 +38,31 @@ class _HomePageState extends State<HomePage>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container();
+    double w = MediaQuery.of(context).size.width;
+    return Scaffold(
+        backgroundColor: const Color(0xffF5F5F5),
+        body: Stack(
+          children: [
+            ListView(
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              children: [
+                searchBar(),
+                SizedBox(height: w / 20),
+                groupOfCards(
+                  'Example Text',
+                  'Example Text',
+                )
+              ],
+            )
+          ],
+        ));
   }
 }
