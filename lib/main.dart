@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -16,8 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
@@ -60,56 +61,56 @@ class _HomePageState extends State<HomePage>
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
                 groupOfCards(
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
                 groupOfCards(
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
                 groupOfCards(
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
                 groupOfCards(
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
                 groupOfCards(
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo(),
+                    const RouteWhereYouGo(),
                     'Example Text',
                     'Example Text',
                     'assets/images/file_name.png',
-                    RouteWhereYouGo()),
+                    const RouteWhereYouGo()),
               ],
             ),
             settingIcon(),
@@ -147,7 +148,8 @@ class _HomePageState extends State<HomePage>
                       size: w / 17, color: Colors.black.withOpacity(.6)),
                   onPressed: () {
                     Navigator.of(context).push(MyFadeRoute(
-                      route: RouteWhereYouGo(),
+                      route: const RouteWhereYouGo(),
+                      page: null,
                     ));
                   },
                 ))
@@ -238,7 +240,7 @@ class _HomePageState extends State<HomePage>
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             onTap: () {
-              Navigator.of(context).push(MyFadeRoute(route: route));
+              Navigator.of(context).push(MyFadeRoute(route: route, page: ()));
             },
             child: Container(
               width: w / 2.36,
@@ -309,7 +311,7 @@ class MyFadeRoute extends PageRouteBuilder {
   final Widget page;
   final Widget route;
 
-  MyFadeRoute({this.page, this.route})
+  MyFadeRoute({required this.page, required this.route})
       : super(
             pageBuilder: (
               BuildContext context,
@@ -329,4 +331,30 @@ class MyFadeRoute extends PageRouteBuilder {
                 ));
 }
 
-class RouteWhereYouGo extends StatelessWidget {}
+class RouteWhereYouGo extends StatelessWidget {
+  const RouteWhereYouGo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 50,
+          centerTitle: true,
+          shadowColor: Colors.black.withOpacity(.5),
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          title: Text('EXAMPLE PAGE',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(.7),
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1)),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black.withOpacity(.8),
+            ),
+            onPressed: () => Navigator.maybePop(context),
+          )),
+    );
+  }
+}
