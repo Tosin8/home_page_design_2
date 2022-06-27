@@ -156,31 +156,79 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget searchBar() {
+    double w = MediaQuery.of(context).size.width;
+    return Padding(
+        padding: EdgeInsets.fromLTRB(w / 20, w / 25, w / 20, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                alignment: Alignment.center,
+                height: w / 8.5,
+                width: w / 1.36,
+                padding: EdgeInsets.symmetric(horizontal: w / 60),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(99),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(.1),
+                      blurRadius: 30,
+                      offset: const Offset(0, 15),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                    maxLines: 1,
+                    decoration: InputDecoration(
+                      fillColor: Colors.transparent,
+                      filled: true,
+                      hintStyle: TextStyle(
+                          color: Colors.black.withOpacity(.4),
+                          fontWeight: FontWeight.w600,
+                          fontSize: w / 22),
+                      prefixIcon: Icon(Icons.search,
+                          color: Colors.black.withOpacity(.6)),
+                      hintText: 'Search anything .....',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none),
+                      contentPadding: EdgeInsets.zero,
+                    ))),
+            SizedBox(height: w / 14),
+            SizedBox(
+                width: w / 1.15,
+                child: Text('Example Text',
+                    textScaleFactor: 1.4,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black.withOpacity(.7),
+                    ))),
+          ],
+        ));
+  }
+
+  Widget groupOfCards(
+      String title1,
+      String subtitle1,
+      String image1,
+      Widget route1,
+      String title2,
+      String subtitle2,
+      String image2,
+      Widget route2) {
     double w = MediaQuery.of(context).size.width; 
-    return Padding(padding:  EdgeInsets.fromLTRB(
-      w / 20, w / 25, w/20, 0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start, 
-      children: [
-      Container(
-        alignment: Alignment.center, 
-        height: w/8.5, 
-        width: w/1.36, 
-        padding:  EdgeInsets.symmetric(horizontal: w/60),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(99), 
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(.1), 
-            blurRadius: 30, 
-            offset: const Offset(0, 15), 
-          ), 
+    return Padding (
+      padding: EdgeInsets.fromLTRB(w/20, 0, w/20, w/20), 
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+        children: [
+          card(title1, subtitle1, image1, route1), 
+          card(title2, subtitle2, image2, route2), 
         ], 
       ), 
-      child: TextField(
-        maxLines: 1,
-        decoration: InputDecoration(fillColor: Colors.transparent, filled: true, hintStyle: TextStyle(color: Colors.black.withOpacity(.4), 
-        fontWeight: FontWeight.w600, fontSize: w/22), ),
-      ))
-    ],))
+    ); 
   }
+
+  Widget 
 }
