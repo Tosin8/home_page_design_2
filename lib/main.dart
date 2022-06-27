@@ -57,12 +57,130 @@ class _HomePageState extends State<HomePage>
                 searchBar(),
                 SizedBox(height: w / 20),
                 groupOfCards(
-                  'Example Text',
-                  'Example Text',
-                )
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
+                groupOfCards(
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
+                groupOfCards(
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
+                groupOfCards(
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
+                groupOfCards(
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
+                groupOfCards(
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo(),
+                    'Example Text',
+                    'Example Text',
+                    'assets/images/file_name.png',
+                    RouteWhereYouGo()),
               ],
-            )
+            ),
+            settingIcon(),
           ],
         ));
+  }
+
+  Widget settingIcon() {
+    double w = MediaQuery.of(context).size.width;
+    return Padding(
+        padding: EdgeInsets.fromLTRB(0, w / 10, w / 20, 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+                height: w / 8.5,
+                width: w / 8.5,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(.1),
+                      blurRadius: 30,
+                      offset: const Offset(0, 15),
+                    ),
+                  ],
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  tooltip: 'Settings',
+                  icon: Icon(Icons.settings,
+                      size: w / 17, color: Colors.black.withOpacity(.6)),
+                  onPressed: () {
+                    Navigator.of(context).push(MyFadeRoute(
+                      route: RouteWhereYouGo(),
+                    ));
+                  },
+                ))
+          ],
+        ));
+  }
+
+  Widget searchBar() {
+    double w = MediaQuery.of(context).size.width; 
+    return Padding(padding:  EdgeInsets.fromLTRB(
+      w / 20, w / 25, w/20, 0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start, 
+      children: [
+      Container(
+        alignment: Alignment.center, 
+        height: w/8.5, 
+        width: w/1.36, 
+        padding:  EdgeInsets.symmetric(horizontal: w/60),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(99), 
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(.1), 
+            blurRadius: 30, 
+            offset: const Offset(0, 15), 
+          ), 
+        ], 
+      ), 
+      child: TextField(
+        maxLines: 1,
+        decoration: InputDecoration(fillColor: Colors.transparent, filled: true, hintStyle: TextStyle(color: Colors.black.withOpacity(.4), 
+        fontWeight: FontWeight.w600, fontSize: w/22), ),
+      ))
+    ],))
   }
 }
