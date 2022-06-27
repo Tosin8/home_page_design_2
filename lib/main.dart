@@ -230,5 +230,40 @@ class _HomePageState extends State<HomePage>
     ); 
   }
 
-  Widget 
+  Widget card(String title, String subtitle, String image, Widget route) {
+    double w = MediaQuery.of(context).size.width; 
+    return Opacity(
+      opacity: _animation.value, 
+      child: InkWell(
+        highlightColor: Colors.transparent, 
+        splashColor: Colors.transparent,
+onTap: () {
+  Navigator.of(context).push(MyFadeRoute(route: route)); 
+},  
+child: Container(
+  width: w/2.36,
+height: w/1.8, 
+decoration: BoxDecoration(
+  color: Colors.white, 
+  borderRadius: BorderRadius.circular(20),
+ boxShadow:[
+  BoxShadow(
+    color: Colors.black.withOpacity(.05),
+     blurRadius: 50), 
+]), 
+child: Column(
+  children: [
+    Container(
+      width: w/2.36, 
+      height: w/2.6,
+      decoration: const BoxDecoration(
+        color: Color(0xff5c71F3), 
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(20), 
+      ))
+    )
+  ],
+),
+    )
+  }
 }
