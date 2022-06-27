@@ -308,4 +308,25 @@ class _HomePageState extends State<HomePage>
 class MyFadeRoute extends PageRouteBuilder {
   final Widget page;
   final Widget route;
+
+  MyFadeRoute({this.page, this.route})
+      : super(
+            pageBuilder: (
+              BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+            ) =>
+                page,
+            transitionsBuilder: (
+              BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child,
+            ) =>
+                FadeTransition(
+                  opacity: animation,
+                  child: route,
+                ));
 }
+
+class RouteWhereYouGo extends StatelessWidget {}
